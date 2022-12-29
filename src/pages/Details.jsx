@@ -2,7 +2,6 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { FiDownload } from "react-icons/fi";
 import ReactPlayer from "react-player";
-import { useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 
 const Details = () => {
