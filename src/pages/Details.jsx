@@ -6,7 +6,7 @@ import { useParams } from "react-router-dom";
 
 const Details = () => {
   const { musicId } = useParams();
-  const [music, setMusic] = useState("");
+  const [music, setMusic] = useState();
 
   useEffect(() => {
     const getDownloadLink = async () => {
@@ -22,11 +22,10 @@ const Details = () => {
       };
 
       const res = await axios.request(options);
-      console.log(res.data);
       setMusic(res.data);
     };
     getDownloadLink(music);
-  }, []);
+  }, [music, musicId]);
 
   return (
     <div>
@@ -36,8 +35,9 @@ const Details = () => {
           <div className="flex flex-col gap-4 p-4">
             <h3 className="text-2xl font-medium">{music.title}</h3>
             <a
-              className="btn gap-2"
               target="_blank"
+              rel="noreferrer"
+              className="btn gap-2"
               href={music.audio[0].url}
               download={music.audio[0].url}
             >
